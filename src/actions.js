@@ -17,3 +17,13 @@ export const shrink = initial => ({
   title: initial.title,
   description: initial.description
 });
+
+/*
+{type: 'SHOW_PROJECT', title, description}
+*/
+
+export const show = project => ({
+  type: 'SHOW_PROJECT',
+  title: project.name,
+  description: project.description
+});

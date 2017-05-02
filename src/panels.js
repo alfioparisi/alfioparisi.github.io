@@ -54,20 +54,30 @@ export const background = {
 export const projects = {
   "projects": [
     {
-      "name": "googleMap",
-      "src": ""
+      "name": "GoogleMap",
+      "src": "",
+      "description": `This project is about using Google Map API to show to the
+user places he might be interested in.
+It's written using Knockout.js`
     },
     {
-      "name": "froggerGame",
-      "src": ""
+      "name": "FroggerGame",
+      "src": "",
+      "description": `This project is about reproducing an old arcade game called
+Frogger.
+It is built with OOP in mind.`
     },
     {
-      "name": "pomodoro",
-      "src": ""
+      "name": "Pomodoro",
+      "src": "",
+      "description": `This is just a timer.
+It's built with Backbone.js`
     },
     {
-      "name": "opimization",
-      "src": ""
+      "name": "Opimization",
+      "src": "",
+      "description": `This project is about optimizing a given website using
+CRP optimization to load the first frame and RAIL to make it work at 60 fps.`
     }
   ],
   "title": "PROJECTS",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {initial, work, education, projects, background} from './panels';
-import {expand, shrink} from './actions';
+import {expand, shrink, show} from './actions';
 import store from './reducers';
 
 class App extends Component {
@@ -74,9 +74,13 @@ class App extends Component {
             >Projects</h2>}
             {state.expandProjects &&
             projects.projects.map(project => (
-              <h3 key={project.name}>{project.name}</h3>
-            ))
-            }
+              <div key={project.name}>
+                <h3
+                  onClick={pj => store.dispatch(show(project))}
+                >{project.name}</h3>
+                {state.title === project.name && <iframe src={project.src}></iframe>}
+              </div>
+            ))}
           </section>
           <section>
             {!state.expandBackground &&
