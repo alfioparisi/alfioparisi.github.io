@@ -85,5 +85,5 @@ CRP optimization to load the first frame and RAIL to make it work at 60 fps.`
     }
   ],
   "title": "PROJECTS",
-  "description": "Here are the projects i like most."
+  "description": "Here are some of my projects."
 };
