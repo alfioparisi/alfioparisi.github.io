@@ -1,5 +1,4 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux';
-import logger from 'redux-logger';  // logs actions dispatch in the console.
+import {combineReducers} from 'redux';
 import {initial} from './panels';
 
 /** Change the page title based on the current selected panel, or project.
@@ -73,7 +72,4 @@ const app = combineReducers({
   expandBackground
 });
 
-// Make the store and enhance it with a middleware for the logger.
-const store = createStore(app, applyMiddleware(logger));
-
-export default store;
+export default app;

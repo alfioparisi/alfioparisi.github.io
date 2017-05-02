@@ -2,95 +2,69 @@ import React, { Component } from 'react';
 import './App.css';
 import {initial, work, education, projects, background} from './panels';
 import {expand, shrink, show} from './actions';
-import store from './reducers';
+import {connect} from 'react-redux';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: initial.title,
-      description: initial.description
-    };
-  }
+let Header = ({title, description, onClick}) => (
+  <header>
+    <div>
+      // Show the title field of the Redux state.
+      <h1>{title}</h1>
+      // If a panel is open, show the button.
+      {title !== 'ALFIO PARISI' &&
+      <button
+        // onClick dispatch an action to shrink any open panel.
+        onClick={onClick}
+      >Close</button>}
+    </div>
+    // If no panel is opened, show the profile pic and the contacts.
+    {title === 'ALFIO PARISI' && <div>Img wannabe</div>}
+    <div><p>{description}</p></div>
+  </header>
+);
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState({
-      title: store.getState().title,
-      description: store.getState().description
-    }));
-  }
+const mapStateToHeaderProps = state => ({
+  title: state.title,
+  description: state.description
+});
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const mapDispatchToHeaderProps = dispatch => ({
+  onClick: init => dispatch(shrink(initial))
+});
 
-  render() {
-    const title = this.state.title;
-    const description = this.state.description;
-    return (
-      <header>
-        <div>
-          // Show the title field of the Redux state.
-          <h1>{title}</h1>
-          // If a panel is open, show the button.
-          {title !== 'ALFIO PARISI' &&
-          <button
-            // onClick dispatch an action to shrink any open panel.
-            onClick={init => store.dispatch(shrink(initial))}
-          >Close</button>}
-        </div>
-        // If no panel is opened, show the profile pic and the contacts.
-        {title === 'ALFIO PARISI' && <div>Img wannabe</div>}
-        <div><p>{description}</p></div>
-      </header>
-    );
-  }
-}
+Header = connect(mapStateToHeaderProps, mapDispatchToHeaderProps)(Header);
 
-class Work extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expandWork: false
-    };
-  }
+let Work = ({expandWork, onClick}) => (
+  <section>
+    // If the panel is not expanded just show an 'h2'.
+    {!expandWork &&
+    <h2
+      // onClick dispatch an action to expand this panel.
+      onClick={onClick}
+    >Work</h2>}
+    // If the panel is expanded show the content of the corresponding object.
+    {expandWork &&
+    // For every item in the array, return a component.
+    work.jobs.map(job => (
+      <Job key={job.id}
+        title={job.title}
+        employer={job.employer}
+        dates={job.dates}
+        description={job.description}
+        location={job.location}
+      />
+    ))}
+  </section>
+);
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState({
-      expandWork: store.getState().expandWork
-    }));
-  }
+const mapStateToWorkProps = state => ({
+  expandWork: state.expandWork
+});
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const mapDispatchToWorkProps = dispatch => ({
+  onClick: panel => dispatch(expand(work))
+});
 
-  render() {
-    const expandWork = this.state.expandWork;
-    return (
-      <section>
-        // If the panel is not expanded just show an 'h2'.
-        {!expandWork &&
-        <h2
-          // onClick dispatch an action to expand this panel.
-          onClick={panel => store.dispatch(expand(work))}
-        >Work</h2>}
-        // If the panel is expanded show the content of the corresponding object.
-        {expandWork &&
-        // For every item in the array, return a component.
-        work.jobs.map(job => (
-          <Job key={job.id}
-            title={job.title}
-            employer={job.employer}
-            dates={job.dates}
-            description={job.description}
-            location={job.location}
-          />
-        ))}
-      </section>
-    );
-  }
-}
+Work = connect(mapStateToWorkProps, mapDispatchToWorkProps)(Work);
 
 // Presentational component.
 // Show the single item of the job array.
@@ -110,53 +84,41 @@ const Job = ({title, employer, dates, description, location}) => (
   </div>
 );
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expandEducation: false
-    };
-  }
+let Education = ({expandEducation, onClick}) => (
+  <section>
+    {!expandEducation &&
+    <h2
+      onClick={onClick}
+    >Education</h2>}
+    {expandEducation &&
+    education.schools.map(school => (
+      <School key={school.id}
+        name={school.name}
+        dates={school.dates}
+        location={school.location}
+      />
+    ))}
+    {expandEducation &&
+      education.onlineCourses.map(course => (
+        <Course key={course.id}
+          name={course.name}
+          title={course.title}
+          dates={course.dates}
+          url={course.url}
+        />
+    ))}
+  </section>
+);
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState({
-      expandEducation: store.getState().expandEducation
-    }));
-  }
+const mapStateToEduProps = state => ({
+  expandEducation: state.expandEducation
+});
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const mapDispatchToEduProps = dispatch => ({
+  onClick: panel => dispatch(expand(education))
+});
 
-  render() {
-    const expandEducation = this.state.expandEducation;
-    return (
-      <section>
-        {!expandEducation &&
-        <h2
-          onClick={panel => store.dispatch(expand(education))}
-        >Education</h2>}
-        {expandEducation &&
-        education.schools.map(school => (
-          <School key={school.id}
-            name={school.name}
-            dates={school.dates}
-            location={school.location}
-          />
-        ))}
-        {expandEducation &&
-          education.onlineCourses.map(course => (
-            <Course key={course.id}
-              name={course.name}
-              title={course.title}
-              dates={course.dates}
-              url={course.url}
-            />
-        ))}
-      </section>
-    );
-  }
-}
+Education = connect(mapStateToEduProps, mapDispatchToEduProps)(Education);
 
 // Presentational.
 const School = ({name, dates, location}) => (
@@ -178,51 +140,38 @@ const Course = ({name, title, dates, url}) => (
   </div>
 );
 
-class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expandProjects: false,
-      title: ''
-    };
-  }
+let Projects = ({title, expandProjects, onClick, onProjectClick}) => (
+  <section>
+    {!expandProjects &&
+    <h2
+      onClick={onClick}
+    >Projects</h2>}
+    {expandProjects &&
+    projects.projects.map(project => (
+      <Project key={project.name}
+        // When a project is clicked, show it in an iframe.
+        onClick={pj => onProjectClick(project)}
+        project={project}
+        title={title}
+        name={project.name}
+        path={project.path}
+        src={project.src}
+      />
+    ))}
+  </section>
+);
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState({
-      expandProjects: store.getState().expandProjects,
-      title: store.getState().title
-    }));
-  }
+const mapStateToProjectsProps = state => ({
+  title: state.title,
+  expandProjects: state.expandProjects
+});
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const mapDispatchToProjectsProps = dispatch => ({
+  onClick: panel => dispatch(expand(projects)),
+  onProjectClick: pj => dispatch(show(pj))
+});
 
-  render() {
-    const expandProjects = this.state.expandProjects;
-    const title = this.state.title;
-    return (
-      <section>
-        {!expandProjects &&
-        <h2
-          onClick={panel => store.dispatch(expand(projects))}
-        >Projects</h2>}
-        {expandProjects &&
-        projects.projects.map(project => (
-          <Project key={project.name}
-            // When a project is clicked, show it in an iframe.
-            onClick={pj => store.dispatch(show(project))}
-            project={project}
-            title={title}
-            name={project.name}
-            path={project.path}
-            src={project.src}
-          />
-        ))}
-      </section>
-    );
-  }
-}
+Projects = connect(mapStateToProjectsProps, mapDispatchToProjectsProps)(Projects);
 
 const Project = ({project, title, name, path, src, onClick}) => (
   <div>
@@ -240,42 +189,30 @@ const Project = ({project, title, name, path, src, onClick}) => (
 
 // Presentational.
 // Might want to make a component for the paragraphs if they get too big.
-class Background extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expandBackground: false
-    };
-  }
+let Background = ({expandBackground, onClick}) => (
+  <section>
+    {!expandBackground &&
+    <h2
+      onClick={onClick}
+    >Background</h2>}
+    {expandBackground &&
+    <div>
+      <p>{background.firstP}</p>
+      <p>{background.secondP}</p>
+    </div>
+    }
+  </section>
+);
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState({
-      expandBackground: store.getState().expandBackground
-    }));
-  }
+const mapStateToBackProps = state => ({
+  expandBackground: state.expandBackground
+});
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const mapDispatchToBackProps = dispatch => ({
+  onClick: panel => dispatch(expand(background))
+});
 
-  render() {
-    const expandBackground = this.state.expandBackground;
-    return (
-      <section>
-        {!expandBackground &&
-        <h2
-          onClick={panel => store.dispatch(expand(background))}
-        >Background</h2>}
-        {expandBackground &&
-        <div>
-          <p>{background.firstP}</p>
-          <p>{background.secondP}</p>
-        </div>
-        }
-      </section>
-    );
-  }
-}
+Background = connect(mapStateToBackProps, mapDispatchToBackProps)(Background);
 
 // Presentational (?)
 const Main = () => (
