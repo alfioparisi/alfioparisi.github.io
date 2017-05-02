@@ -18,7 +18,11 @@ let Header = ({title, description, onClick}) => (
     </div>
     // If no panel is opened, show the profile pic and the contacts.
     {title === 'ALFIO PARISI' && <div>Img wannabe</div>}
-    <div><p>{description}</p></div>
+    <div>
+      <p>{description.first}</p>
+      <p>{description.second}</p>
+      <p>{description.third}</p>
+    </div>
   </header>
 );
 
@@ -197,8 +201,7 @@ let Background = ({expandBackground, onClick}) => (
     >Background</h2>}
     {expandBackground &&
     <div>
-      <p>{background.firstP}</p>
-      <p>{background.secondP}</p>
+      <p>Maybe put an image in here ?</p>
     </div>
     }
   </section>
