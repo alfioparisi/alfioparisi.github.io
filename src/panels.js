@@ -7,6 +7,7 @@ linkedin: somelinkedinstuff`
 
 export const work = {
   "jobs": [{
+    "id": 0,
     "employer": "Institute of Light",
     "title": "kitchen porter",
     "dates": "2016-2017",
@@ -19,19 +20,22 @@ export const work = {
 
 export const education = {
   "schools": [{
+    "id": 0,
     "name": "Lice Statale Ischia",
     "location": "Ischia, NA, Italy",
     "dates": "2007-2012"
   }],
   "onlineCourses": [{
+      "id": 0,
       "title": "Front End Nanodegree",
-      "school": "Udacity",
+      "name": "Udacity",
       "dates": "03/2017- in progress",
       "url": "https://www.udacity.com/"
     },
     {
+      "id": 1,
       "title": "/",
-      "school": "Khan Academy",
+      "name": "Khan Academy",
       "dates": "2016-2017",
       "url": "https://www.khanacademy.org/"
     }
@@ -41,18 +45,31 @@ export const education = {
 };
 
 export const background = {
-  "location": "Ischia",
-  "state": "Italy",
-  "born": "17/08/1993",
   "title": "BACKGROUND",
+  "firstP": "I was born in Ischia, Italy in 17/08/1993.",
+  "secondP": "Some kind of description and w/e.",
   "description": "This is my background."
 };
 
 export const projects = {
-  "googleMap": "", // insert link to google map project on github
-  "froggerGame": "",
-  "pomodoro": "",
-  "opimization": "",
+  "projects": [
+    {
+      "name": "googleMap",
+      "src": ""
+    },
+    {
+      "name": "froggerGame",
+      "src": ""
+    },
+    {
+      "name": "pomodoro",
+      "src": ""
+    },
+    {
+      "name": "opimization",
+      "src": ""
+    }
+  ],
   "title": "PROJECTS",
   "description": "Here are the projects i like most."
 };
