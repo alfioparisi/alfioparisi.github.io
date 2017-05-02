@@ -55,27 +55,31 @@ export const projects = {
   "projects": [
     {
       "name": "GoogleMap",
-      "src": "",
+      "src": "#",
+      "path": "./googlemap/dist/app.html",
       "description": `This project is about using Google Map API to show to the
 user places he might be interested in.
 It's written using Knockout.js`
     },
     {
       "name": "FroggerGame",
-      "src": "",
+      "src": "https://github.com/alfioparisi/arcade-game",
+      "path": "./frogger/frogger.html",
       "description": `This project is about reproducing an old arcade game called
 Frogger.
 It is built with OOP in mind.`
     },
     {
       "name": "Pomodoro",
-      "src": "",
+      "src": "https://github.com/alfioparisi/pomodoro-clock",
+      "path": "./pomodoro/pomodoro.html",
       "description": `This is just a timer.
 It's built with Backbone.js`
     },
     {
       "name": "Opimization",
-      "src": "",
+      "src": "https://github.com/alfioparisi/optimization-project",
+      "path": "./optimization/dist/index.html",
       "description": `This project is about optimizing a given website using
 CRP optimization to load the first frame and RAIL to make it work at 60 fps.`
     }

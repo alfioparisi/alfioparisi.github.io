@@ -78,7 +78,11 @@ class App extends Component {
                 <h3
                   onClick={pj => store.dispatch(show(project))}
                 >{project.name}</h3>
-                {state.title === project.name && <iframe src={project.src}></iframe>}
+                {state.title === project.name &&
+                <div>
+                  <iframe src={project.path}></iframe>
+                  <a href={project.src}>GitHub repository</a>
+                </div>}
               </div>
             ))}
           </section>
