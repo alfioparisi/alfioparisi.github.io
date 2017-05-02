@@ -1,3 +1,5 @@
+// Data.
+
 export const initial = {
   "title": 'ALFIO PARISI',
   "description": `email: alfioparisi.93@gmail.com

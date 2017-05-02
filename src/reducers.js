@@ -1,17 +1,30 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
-import logger from 'redux-logger';
+import logger from 'redux-logger';  // logs actions dispatch in the console.
 import {initial} from './panels';
 
+/** Change the page title based on the current selected panel, or project.
+* @param {string}
+* @return {string}
+*/
 const title = (state = initial.title, action) => {
   if (action.type === 'EXPAND' || action.type === 'SHRINK' || action.type === 'SHOW_PROJECT') return action.title;
   return state;
 };
 
+/** Change the description based on the current selected panel, or project.
+* @param {string}
+* @return {string}
+*/
 const description = (state = initial.description, action) => {
   if (action.type === 'EXPAND' || action.type === 'SHRINK' || action.type === 'SHOW_PROJECT') return action.description;
   return state;
 };
 
+/** Expand the work panel. If the action is 'EXPAND', but the target is not 'work'
+then shrink this panel.
+* @param {boolean}
+* @return {boolean}
+*/
 const expandWork = (state = false, action) => {
   if (action.type === 'EXPAND') {
     if (action.title === 'WORK') return true;
@@ -48,6 +61,9 @@ const expandBackground = (state = false, action) => {
   return state;
 };
 
+/** Root reducer.
+* @return {object} : the Redux state of the whole app.
+*/
 const app = combineReducers({
   title,
   description,
@@ -57,6 +73,7 @@ const app = combineReducers({
   expandBackground
 });
 
+// Make the store and enhance it with a middleware for the logger.
 const store = createStore(app, applyMiddleware(logger));
 
 export default store;

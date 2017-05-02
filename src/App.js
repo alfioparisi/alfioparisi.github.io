@@ -4,27 +4,37 @@ import {initial, work, education, projects, background} from './panels';
 import {expand, shrink, show} from './actions';
 import store from './reducers';
 
+// Should be a mixed component.
 const Header = ({title, description}) => (
   <header>
     <div>
+      // Show the title field of the Redux state.
       <h1>{title}</h1>
+      // If a panel is open, show the button.
       {title !== 'ALFIO PARISI' &&
       <button
+        // onClick dispatch an action to shrink any open panel.
         onClick={init => store.dispatch(shrink(initial))}
       >Close</button>}
     </div>
+    // If no panel is opened, show the profile pic and the contacts.
     {title === 'ALFIO PARISI' && <div>Img wannabe</div>}
     <div><p>{description}</p></div>
   </header>
 );
 
+// Container component (?)
 const Work = ({expandWork}) => (
   <section>
+    // If the panel is not expanded just show an 'h2'.
     {!expandWork &&
     <h2
+      // onClick dispatch an action to expand this panel.
       onClick={panel => store.dispatch(expand(work))}
     >Work</h2>}
+    // If the panel is expanded show the content of the corresponding object.
     {expandWork &&
+    // For every item in the array, return a component.
     work.jobs.map(job => (
       <Job key={job.id}
         title={job.title}
@@ -37,6 +47,8 @@ const Work = ({expandWork}) => (
   </section>
 );
 
+// Presentational component.
+// Show the single item of the job array.
 const Job = ({title, employer, dates, description, location}) => (
   <div>
     <header>
@@ -79,6 +91,7 @@ const Education = ({expandEducation}) => (
   </section>
 );
 
+// Presentational.
 const School = ({name, dates, location}) => (
   <div>
     <h3>{name}</h3>
@@ -87,6 +100,7 @@ const School = ({name, dates, location}) => (
   </div>
 );
 
+// Presentational.
 const Course = ({name, title, dates, url}) => (
   <div>
     <h3>{name}</h3>
@@ -106,6 +120,8 @@ const Projects = ({expandProjects, title}) => (
     {expandProjects &&
     projects.projects.map(project => (
       <Project key={project.name}
+        // When a project is clicked, show it in an iframe.
+        onClick={pj => store.dispatch(show(project))}
         project={project}
         title={title}
         name={project.name}
@@ -116,9 +132,10 @@ const Projects = ({expandProjects, title}) => (
   </section>
 );
 
-const Project = ({project, title, name, path, src}) => (
+const Project = ({project, title, name, path, src, onClick}) => (
   <div>
-    <h3 onClick={pj => store.dispatch(show(project))}>
+    // When a project is clicked, show it in an iframe.
+    <h3 onClick={onClick}>
       {name}
     </h3>
     {title === name &&
@@ -129,6 +146,7 @@ const Project = ({project, title, name, path, src}) => (
   </div>
 );
 
+// Presentational.
 // Might want to make a component for the paragraphs if they get too big.
 const Background = ({expandBackground}) => (
   <section>
@@ -145,6 +163,7 @@ const Background = ({expandBackground}) => (
   </section>
 );
 
+// Presentational (?)
 const Main = ({expandWork, expandEducation, expandProjects, title, expandBackground}) => (
   <main>
     <Work expandWork={expandWork} />
@@ -154,12 +173,15 @@ const Main = ({expandWork, expandEducation, expandProjects, title, expandBackgro
   </main>
 );
 
+// Presentational.
 const Footer = () => (
   <footer>
     <p>Something gotta go in here.</p>
   </footer>
 );
 
+// Root component.
+// Takes in the Redux state as prop and pass it down.
 class App extends Component {
   render() {
     const state = this.props.state;

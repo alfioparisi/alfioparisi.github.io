@@ -2,6 +2,8 @@
 {type: 'EXPAND', title, description}
 */
 
+// Create an action to expand one panel.
+// @param {object}
 export const expand = panel => ({
   type: 'EXPAND',
   title: panel.title,
@@ -12,6 +14,8 @@ export const expand = panel => ({
 {type: 'SHRINK', title, description}
 */
 
+// Create an action to shrink a panel.
+// @param {object}
 export const shrink = initial => ({
   type: 'SHRINK',
   title: initial.title,
@@ -22,6 +26,8 @@ export const shrink = initial => ({
 {type: 'SHOW_PROJECT', title, description}
 */
 
+// Create an action to show one of the projects.
+// @param {object}
 export const show = project => ({
   type: 'SHOW_PROJECT',
   title: project.name,
