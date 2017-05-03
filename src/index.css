@@ -15,6 +15,8 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 758px;
+  margin: auto;
 }
 
 /************************************************************
@@ -35,6 +37,7 @@ body {
 .title-button {
   flex: 1;
   min-width: 48px;
+  max-width: 100px;
   height: 48px;
   margin: auto;
   border: none;
@@ -43,6 +46,7 @@ body {
   color: #f7f5e6;
   font-size: 18px;
   box-shadow: 1px 1px 4px #333a56;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
 }
@@ -82,6 +86,8 @@ body {
 
 .info {
   display: flex;
+  max-width: 470px;
+  margin: auto;
 }
 
 .info-pic {
@@ -92,7 +98,9 @@ body {
 
 .info-pic--img {
   width: 100%;
-  heigth: 100%;
+  height: 100%;
+  max-width: 115px;
+  max-height: 115px;
 }
 
 .info-description {
@@ -106,8 +114,10 @@ body {
 
 .panels {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vw;
+  max-height: 370px;
+  margin: 5px auto 15px;
 }
 
 [class^='panels-'] {
@@ -119,6 +129,8 @@ body {
   position: absolute;
   width: 50%;
   height: 50%;
+  max-width: 185px;
+  max-height: 185px;
   overflow-y: hidden;
   will-change: transform;
   transition: top 300ms ease-in-out, left 300ms ease-in-out,
@@ -127,15 +139,15 @@ body {
 }
 
 .panels-work {
-  top: 0;
-  left: 0;
+  right: 50%;
+  bottom: 50%;
 }
 .panels-edu {
   top: 50%;
-  left: 0;
+  right: 50%;
 }
 .panels-pjs {
-  top: 0;
+  bottom: 50%;
   left: 50%;
 }
 .panels-back {
@@ -146,15 +158,18 @@ body {
 
 .expand {
   width: 100%;
+  max-width: 100%;
   top: 0;
   left: 0;
   height: 100vh;
+  max-height: 100vh;
   z-index: 1;
 }
 
 .panel-title {
   margin: auto;
   color: #e8e8e8;
+  cursor: pointer;
 }
 
 .panel-body--title {
