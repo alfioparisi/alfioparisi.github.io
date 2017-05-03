@@ -76,9 +76,9 @@ Work = connect(mapStateToWorkProps, mapDispatchToWorkProps)(Work);
 const Job = ({title, employer, dates, description, location}) => (
   <div>
     <header>
-      <h3>{title}</h3>
+      <h3 className="panel-body--title">{title}</h3>
       <h4>{employer}</h4>
-      <small>{dates}</small>
+      <small className="panel-body--dates">{dates}</small>
     </header>
     <article>
       <p>{description}</p>
@@ -131,7 +131,7 @@ Education = connect(mapStateToEduProps, mapDispatchToEduProps)(Education);
 // Presentational.
 const School = ({name, dates, location}) => (
   <div>
-    <h3>{name}</h3>
+    <h3 className="panel-body--title">{name}</h3>
     <small>{dates}</small>
     <p>{location}</p>
   </div>
@@ -140,9 +140,9 @@ const School = ({name, dates, location}) => (
 // Presentational.
 const Course = ({name, title, dates, url}) => (
   <div>
-    <h3>{name}</h3>
+    <h3 className="panel-body--title">{name}</h3>
     <h4>{title}</h4>
-    <small>{dates}</small>
+    <small className="panel-body--dates">{dates}</small>
     <br />
     <a href={url} target="_blank">{url}</a>
   </div>
