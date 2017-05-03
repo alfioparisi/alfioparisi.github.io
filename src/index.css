@@ -141,6 +141,7 @@ body {
 .panels-back {
   top: 50%;
   left: 50%;
+  padding: 0;
 }
 
 .expand {
@@ -197,6 +198,31 @@ body {
   text-decoration: none;
   heigth: 20px;
   padding: 1px;
+}
+
+/**********************************************************************
+  BACKGROUND
+*/
+
+.back--figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+.back--img {
+  width: 100%;
+  height: 87%;
+  margin: 0;
+  padding: 0;
+}
+
+.back--caption {
+  position: absolute;
+  bottom: -27px;
+  left: 5px;
+  color: #e8e8e8;
 }
 
 /***************************************************************************

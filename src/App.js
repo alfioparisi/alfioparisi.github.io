@@ -5,6 +5,7 @@ import {expand, shrink, show} from './actions';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
 import pic from './profile-pictures.png';
+import castelloAragonese from './castello_aragonese.jpg';
 
 let Header = ({title, description, onClick}) => (
   <header>
@@ -202,7 +203,6 @@ const Project = ({project, title, name, path, src, onClick, onBtnClick}) => (
 );
 
 // Presentational.
-// Might want to make a component for the paragraphs if they get too big.
 let Background = ({expandBackground, onClick}) => (
   <section className={classNames({
     "panels-back": true,
@@ -213,9 +213,12 @@ let Background = ({expandBackground, onClick}) => (
       onClick={onClick}
     >Background</h2>}
     {expandBackground &&
-    <div>
-      <p>Maybe put an image in here ?</p>
-    </div>
+    <figure className="back--figure">
+      <img className="back--img"
+        src={castelloAragonese} alt="Castello Aragonese, Ischia" />
+      <figcaption className="back--caption">
+        This is the Castello Aragonese.</figcaption>
+    </figure>
     }
   </section>
 );
