@@ -1,5 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+* {
+  outline: 1px solid red !important;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font: 16px/1.4 'PT Sans', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/************************************************************
+  HEADER
+*/
+
+.title {
+  display: flex;
+  padding: 0 12px;
+}
+
+.title-name {
+  flex: 3;
+}
+
+.title-button {
+  flex: 1;
+  background-color: #ccc;
+}
+
+.info {
+  display: flex;
+}
+
+.info-pic {
+  flex: 1;
+  margin: auto;
+  text-align: center;
+}
+
+.info-description {
+  flex: 2;
+  padding-left: 5px;
+}
+
+/*********************************************************************
+  MAIN
+*/
+
+.panels {
+  position: relative;
+  width: 100vw;
+  height: 100vw;
+}
+
+[class^='panels-'] {
+  background-color: #5d5;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  overflow-y: hidden;
+  will-change: transform;
+  transition: top 300ms ease-in-out, left 300ms ease-in-out,
+    width 300ms ease-in-out 300ms,
+    height 300ms ease-in-out 600ms;
+}
+
+.panels-work {
+  top: 0;
+  left: 0;
+}
+.panels-edu {
+  top: 50%;
+  left: 0;
+}
+.panels-pjs {
+  top: 0;
+  left: 50%;
+}
+.panels-back {
+  top: 50%;
+  left: 50%;
+}
+
+.panel-title {
+  margin: 30% 25%;
+}
+
+.expand {
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1;
 }

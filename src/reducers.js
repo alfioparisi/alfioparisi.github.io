@@ -26,7 +26,7 @@ then shrink this panel.
 */
 const expandWork = (state = false, action) => {
   if (action.type === 'EXPAND') {
-    if (action.title === 'WORK') return true;
+    if (action.title === 'Work') return true;
     else return false;
   }
   if (action.type === 'SHRINK') return false;
@@ -35,7 +35,7 @@ const expandWork = (state = false, action) => {
 
 const expandEducation = (state = false, action) => {
   if (action.type === 'EXPAND') {
-    if (action.title === 'EDUCATION') return true;
+    if (action.title === 'Education') return true;
     else return false;
   }
   if (action.type === 'SHRINK') return false;
@@ -44,7 +44,7 @@ const expandEducation = (state = false, action) => {
 
 const expandProjects = (state = false, action) => {
   if (action.type === 'EXPAND') {
-    if (action.title === 'PROJECTS') return true;
+    if (action.title === 'Projects') return true;
     else return false;
   }
   if (action.type === 'SHRINK') return false;
@@ -53,7 +53,7 @@ const expandProjects = (state = false, action) => {
 
 const expandBackground = (state = false, action) => {
   if (action.type === 'EXPAND') {
-    if (action.title === 'BACKGROUND') return true;
+    if (action.title === 'Background') return true;
     else return false;
   }
   if (action.type === 'SHRINK') return false;

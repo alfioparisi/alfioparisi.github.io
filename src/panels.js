@@ -1,7 +1,7 @@
 // Data.
 
 export const initial = {
-  "title": 'ALFIO PARISI',
+  "title": 'Alfio Parisi',
   "description": {
     "first": "email: alfioparisi.93@gmail.com",
     "second": "GitHub: github.com/alfioparisi",
@@ -18,9 +18,9 @@ export const work = {
     "location": "London",
     "description": "Working in a kitchen to help out chefs in their everyday tasks"
   }],
-  "title": "WORK",
+  "title": "Work",
   "description": {
-    "first": "Hello, here are the jobs i've done...Actually, it's only one.",
+    "first": "Hello, here are the jobs i've done...actually, it's only one.",
     "second": "",
     "third": ""
   }
@@ -48,7 +48,7 @@ export const education = {
       "url": "https://www.khanacademy.org/"
     }
   ],
-  "title": "EDUCATION",
+  "title": "Education",
   "description": {
     "first": "This is my education panel.",
     "second": `Got my high school diploma back in Italy. Then tried a few years
@@ -59,7 +59,7 @@ as an hobby, which eventually became a passion :)`
 };
 
 export const background = {
-  "title": "BACKGROUND",
+  "title": "Background",
   "description": {
     "first": "I was born in Ischia, Italy, 17/08/1993.",
     "second": "It's a small island. A nice place for holidays.",
@@ -113,7 +113,7 @@ Frogger.`,
       }
     }
   ],
-  "title": "PROJECTS",
+  "title": "Projects",
   "description": {
     "first": "Here are some of my projects.",
     "second": "Mostly they are from the Udacity Nanodegree course.",

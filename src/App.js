@@ -3,25 +3,27 @@ import './App.css';
 import {initial, work, education, projects, background} from './panels';
 import {expand, shrink, show} from './actions';
 import {connect} from 'react-redux';
+import classNames from 'classnames';
 
 let Header = ({title, description, onClick}) => (
   <header>
-    <div>
-      // Show the title field of the Redux state.
-      <h1>{title}</h1>
-      // If a panel is open, show the button.
-      {title !== 'ALFIO PARISI' &&
-      <button
-        // onClick dispatch an action to shrink any open panel.
+    <div className="title">
+      <h1 className="title-name">{title}</h1>
+      {title !== 'Alfio Parisi' &&
+      <button className="title-button"
         onClick={onClick}
       >Close</button>}
     </div>
-    // If no panel is opened, show the profile pic and the contacts.
-    {title === 'ALFIO PARISI' && <div>Img wannabe</div>}
-    <div>
-      <p>{description.first}</p>
-      <p>{description.second}</p>
-      <p>{description.third}</p>
+    <div className="info">
+      {title === 'Alfio Parisi' &&
+      <div className="info-pic">
+        <img src="" alt="profile pic" />
+      </div>}
+      <div className="info-description">
+        <p>{description.first}</p>
+        <p>{description.second}</p>
+        <p>{description.third}</p>
+      </div>
     </div>
   </header>
 );
@@ -32,22 +34,21 @@ const mapStateToHeaderProps = state => ({
 });
 
 const mapDispatchToHeaderProps = dispatch => ({
-  onClick: init => dispatch(shrink(initial))
+  onClick: () => setTimeout(init => dispatch(shrink(initial)), 300)
 });
 
 Header = connect(mapStateToHeaderProps, mapDispatchToHeaderProps)(Header);
 
 let Work = ({expandWork, onClick}) => (
-  <section>
-    // If the panel is not expanded just show an 'h2'.
+  <section className={classNames({
+    "panels-work": true,
+    "expand": expandWork
+  })}>
     {!expandWork &&
-    <h2
-      // onClick dispatch an action to expand this panel.
+    <h2 className="panel-title"
       onClick={onClick}
     >Work</h2>}
-    // If the panel is expanded show the content of the corresponding object.
     {expandWork &&
-    // For every item in the array, return a component.
     work.jobs.map(job => (
       <Job key={job.id}
         title={job.title}
@@ -89,9 +90,12 @@ const Job = ({title, employer, dates, description, location}) => (
 );
 
 let Education = ({expandEducation, onClick}) => (
-  <section>
+  <section className={classNames({
+    "panels-edu": true,
+    "expand": expandEducation
+  })}>
     {!expandEducation &&
-    <h2
+    <h2 className="panel-title"
       onClick={onClick}
     >Education</h2>}
     {expandEducation &&
@@ -145,15 +149,17 @@ const Course = ({name, title, dates, url}) => (
 );
 
 let Projects = ({title, expandProjects, onClick, onProjectClick}) => (
-  <section>
+  <section className={classNames({
+    "panels-pjs": true,
+    "expand": expandProjects
+  })}>
     {!expandProjects &&
-    <h2
+    <h2 className="panel-title"
       onClick={onClick}
     >Projects</h2>}
     {expandProjects &&
     projects.projects.map(project => (
       <Project key={project.name}
-        // When a project is clicked, show it in an iframe.
         onClick={pj => onProjectClick(project)}
         project={project}
         title={title}
@@ -179,7 +185,6 @@ Projects = connect(mapStateToProjectsProps, mapDispatchToProjectsProps)(Projects
 
 const Project = ({project, title, name, path, src, onClick}) => (
   <div>
-    // When a project is clicked, show it in an iframe.
     <h3 onClick={onClick}>
       {name}
     </h3>
@@ -194,9 +199,12 @@ const Project = ({project, title, name, path, src, onClick}) => (
 // Presentational.
 // Might want to make a component for the paragraphs if they get too big.
 let Background = ({expandBackground, onClick}) => (
-  <section>
+  <section className={classNames({
+    "panels-back": true,
+    "expand": expandBackground
+  })}>
     {!expandBackground &&
-    <h2
+    <h2 className="panel-title"
       onClick={onClick}
     >Background</h2>}
     {expandBackground &&
@@ -219,7 +227,7 @@ Background = connect(mapStateToBackProps, mapDispatchToBackProps)(Background);
 
 // Presentational (?)
 const Main = () => (
-  <main>
+  <main className="panels">
     <Work />
     <Education />
     <Projects />
@@ -239,7 +247,7 @@ const Footer = () => (
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
         <Main />
         <Footer />
