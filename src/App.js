@@ -4,6 +4,7 @@ import {initial, work, education, projects, background} from './panels';
 import {expand, shrink, show} from './actions';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
+import pic from './profile-pictures.png';
 
 let Header = ({title, description, onClick}) => (
   <header>
@@ -17,7 +18,7 @@ let Header = ({title, description, onClick}) => (
     <div className="info">
       {title === 'Alfio Parisi' &&
       <div className="info-pic">
-        <img src="" alt="profile pic" />
+        <img className="info-pic--img" src={pic} alt="profile pic" />
       </div>}
       <div className="info-description">
         <p>{description.first}</p>
@@ -132,7 +133,7 @@ Education = connect(mapStateToEduProps, mapDispatchToEduProps)(Education);
 const School = ({name, dates, location}) => (
   <div>
     <h3 className="panel-body--title">{name}</h3>
-    <small>{dates}</small>
+    <small className="panel-body--dates">{dates}</small>
     <p>{location}</p>
   </div>
 );
@@ -184,12 +185,12 @@ const mapDispatchToProjectsProps = dispatch => ({
 
 Projects = connect(mapStateToProjectsProps, mapDispatchToProjectsProps)(Projects);
 
-const Project = ({project, title, name, path, src, onClick}) => (
+const Project = ({project, title, name, path, src, onClick, onBtnClick}) => (
   <div className={classNames({
     "projects-project": true,
     "show": title === name
   })}>
-    <h3 onClick={onClick}>
+    <h3 className="projects-title" onClick={onClick}>
       {name}
     </h3>
     {title === name &&
@@ -241,7 +242,7 @@ const Main = () => (
 
 // Presentational.
 const Footer = () => (
-  <footer>
+  <footer className="footer">
     <p>Something gotta go in here.</p>
   </footer>
 );

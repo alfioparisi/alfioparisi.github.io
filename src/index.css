@@ -25,6 +25,7 @@ body {
   display: flex;
   padding: 0 12px;
   background-color: #e8e8e8;
+  margin-bottom: 5px;
 }
 
 .title-name {
@@ -87,6 +88,11 @@ body {
   flex: 1;
   margin: auto;
   text-align: center;
+}
+
+.info-pic--img {
+  width: 100%;
+  heigth: 100%;
 }
 
 .info-description {
@@ -168,12 +174,13 @@ body {
 
 .projects-project {
   will-change: transform;
+  order: 1;
 }
 
 .show {
-  width: 100vw;
   height: 453px;
   border-bottom: 1px solid #e8e8e8;
+  order: 0;
 }
 
 .projects-iframe {
@@ -181,7 +188,7 @@ body {
   width: 85%;
   margin: auto;
   height: 350px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .projects-link {
@@ -190,4 +197,13 @@ body {
   text-decoration: none;
   heigth: 20px;
   padding: 1px;
+}
+
+/***************************************************************************
+  FOOTER
+*/
+
+.footer {
+  background-color: #e8e8e8;
+  padding: 0 5px;
 }
