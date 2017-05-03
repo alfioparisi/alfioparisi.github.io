@@ -151,6 +151,7 @@ const Course = ({name, title, dates, url}) => (
 let Projects = ({title, expandProjects, onClick, onProjectClick}) => (
   <section className={classNames({
     "panels-pjs": true,
+    "projects": true,
     "expand": expandProjects
   })}>
     {!expandProjects &&
@@ -184,14 +185,17 @@ const mapDispatchToProjectsProps = dispatch => ({
 Projects = connect(mapStateToProjectsProps, mapDispatchToProjectsProps)(Projects);
 
 const Project = ({project, title, name, path, src, onClick}) => (
-  <div>
+  <div className={classNames({
+    "projects-project": true,
+    "show": title === name
+  })}>
     <h3 onClick={onClick}>
       {name}
     </h3>
     {title === name &&
     <div>
-      <iframe src={path}></iframe>
-      <a href={src}>GitHub repository</a>
+      <iframe className="projects-iframe" src={path}></iframe>
+      <a className="projects-link" href={src}>GitHub repository</a>
     </div>}
   </div>
 );

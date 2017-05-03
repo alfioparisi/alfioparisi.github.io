@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
 * {
-  outline: 1px solid red !important;
   box-sizing: border-box;
+  color: #333a56;
 }
 
 body {
   margin: 0;
   padding: 0;
   font: 16px/1.4 'PT Sans', sans-serif;
+  background-color: #f7f5e6;
 }
 
 .container {
@@ -23,6 +24,7 @@ body {
 .title {
   display: flex;
   padding: 0 12px;
+  background-color: #e8e8e8;
 }
 
 .title-name {
@@ -60,7 +62,8 @@ body {
 }
 
 [class^='panels-'] {
-  background-color: #5d5;
+  background-color: #52658f;
+  box-shadow: 0 0 1px #f7f5e6;
   position: absolute;
   width: 50%;
   height: 50%;
@@ -90,6 +93,7 @@ body {
 
 .panel-title {
   margin: 30% 25%;
+  color: #e8e8e8;
 }
 
 .expand {
@@ -98,4 +102,38 @@ body {
   left: 0;
   height: 100vh;
   z-index: 1;
+}
+
+/********************************************************************
+  PROJECTS
+*/
+
+.projects {
+  text-align: center;
+}
+
+.projects-project {
+  will-change: transform;
+}
+
+.show {
+  width: 100vw;
+  height: 453px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.projects-iframe {
+  border: none;
+  width: 85%;
+  margin: auto;
+  height: 350px;
+  margin-bottom: 15px;
+}
+
+.projects-link {
+  display: inline-block;
+  color: #f7f5e6;
+  text-decoration: none;
+  heigth: 20px;
+  padding: 1px;
 }
