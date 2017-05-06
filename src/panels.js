@@ -70,15 +70,14 @@ export const background = {
 export const projects = {
   "projects": [
     {
-      "name": "GoogleMap",
+      "name": "HealthTracker",
       "src": "#",
-      "path": "./googlemap/dist/app.html",
+      "path": "./health-tracker/dist/index.html",
       "description": {
         "first": `This project was about the use of Ajax requests to get data from
 an API.`,
-        "second": `The requirements were about use at least 2 different APIs
-and show to the user a bunch of places of interests, which he can filter.`,
-        "third": "It's built using Knockout.js"
+        "second": `It queries the Nutritionix API, to get info about food calories.`,
+        "third": "It's built using Backbone.js"
       }
     },
     {

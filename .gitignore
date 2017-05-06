@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /public/frogger
-/public/googlemap
+/public/health-tracker
 /public/optimization
 /public/pomodoro
 
@@ -11,6 +11,7 @@
 /coverage
 
 # production
+/build
 
 # misc
 .DS_Store
