@@ -1,0 +1,15 @@
+.timer-container {
+  width: 360px;
+  height: 380px;
+}
+
+.timer {
+  width: 360px;
+  height: 360px;
+  font-size: 40px;
+  line-height: 360px;
+}
+
+.msg {
+  font-size: 30px;
+}

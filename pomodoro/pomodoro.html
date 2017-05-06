@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pomodoro Clock</title>
+  <link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/pomodoro.css">
+  <link rel="stylesheet" href="css/pomodoro-md.css" media="(min-width: 450px)">
+  <link rel="stylesheet" href="css/pomodoro-lg.css" media="(min-width: 950px)">
+</head>
+<body>
+
+  <div class="container">
+    <!-- title -->
+    <header class="main-header">
+      <h1 class="title">
+        Pomodoro clock
+      </h1>
+      <a class="todo-toggle" href="#">Click this text for a todo-list.</a>
+    </header>
+
+    <!-- task -->
+    <form class="task">
+      <!-- set time -->
+      <label>Timer:</label>
+      <input type="number" name="quantity" min="1" max="59" class="time" value="25">
+      <button class="reset" type="reset">
+        Reset
+      </button>
+    </form>
+
+    <!-- Todo panel -->
+    <section class="todo-pane">
+    <header id="header">
+      <button class="go-back">Hide</button>
+      <input type="text" id="new-todo" class="todo-input" autofocus>
+    </header>
+    <section id="main">
+      <input type="checkbox" id="toggle-all" class="todo-input">
+      <label for="toggle-all">mark as completed</label>
+      <ul id="todo-list"></ul>
+    </section>
+    <footer id="info">
+      <button id="clear-completed" class="todo-button">Clear All</button>
+      <p>Todo list based on <a href="http://todomvc.com/" target="_blank">TodoMVC</a></p>
+    </footer>
+  </section>
+
+    <!-- timer -->
+    <section class="timer-container">
+      <div class="timer">
+        Set your time
+      </div>
+      <div class="msg"></div>
+    </section>
+    <!-- start and stop the timer -->
+    <section class="btn-container">
+      <button class="start" type="button">
+        Start
+      </button>
+      <button class="stop" type="button">
+        Stop
+      </button>
+    </section>
+  </div>
+
+  <!-- Template for a single todo -->
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input type="checkbox" class="toggle todo-input" <%= completed ? "checked" : "" %>>
+      <label for=""><%= title %></label>
+      <button class="destroy todo-button"></button>
+    </div>
+    <input type="text" class="edit todo-input" value="<%= title %>">
+  </script>
+
+  <!-- Libraries required -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+  <!-- <script src="pomodoro.js"></script> -->
+  <script src="models/pomodoro.js"></script>
+  <script src="models/todo.js"></script>
+  <script src="collections/todos.js"></script>
+  <script src="views/todos.js"></script>
+  <script src="views/todo-pane.js"></script>
+  <script src="views/pomodoro.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
